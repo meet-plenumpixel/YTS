@@ -1,0 +1,25 @@
+{% extends 'scraper/base_site.html' %}
+
+
+{% block before_main %}
+  {% include 'scraper/includes/tags.html' with channels=channels current_channel=channel.id only%}
+{% endblock before_main %}
+
+
+{% block content %}
+  {% include 'scraper/includes/video_grid.html'%}
+{% endblock content %}
+
+
+{% block extrajs %}
+  {{ block.super }}
+  <script>
+    $(document).ready(function () {
+      $('#hash-tags').on('mousewheel', function (e, delta) {
+        this.scrollLeft += (e.originalEvent.deltaY / 2);
+        e.preventDefault();
+      });
+
+    });
+  </script>
+{% endblock extrajs %}
