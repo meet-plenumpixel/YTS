@@ -6,7 +6,6 @@ import os
 
 # THIRDPARTY LIBRARY
 import dj_database_url
-import django_heroku
 
 # LOCALFOLDER LIBRARY
 from . import DATABASES, LOGGING, MIDDLEWARE, STATICFILES_STORAGE
