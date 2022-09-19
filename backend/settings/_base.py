@@ -106,8 +106,7 @@ DATABASES = {
     "ENFORCE_SCHEMA": False,
     "CLIENT": {
       # pylint: disable-next=line-too-long
-      "host": f"mongodb+srv://{env.str('MONGO_USERNAME')}:{env.str('MONGO_PASSWORD')}@{env.str('MONGO_CLUSTER')}\
-        .phvbuke.mongodb.net/?retryWrites=true&w=majority"
+      "host": f"mongodb+srv://{env.str('MONGO_USERNAME')}:{env.str('MONGO_PASSWORD')}@{env.str('MONGO_CLUSTER')}.phvbuke.mongodb.net/?retryWrites=true&w=majority"
     },
   },
 }
