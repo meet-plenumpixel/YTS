@@ -91,11 +91,15 @@ TEMPLATES = [
 WSGI_APPLICATION = "backend.wsgi.application"
 
 
+# THIRDPARTY LIBRARY
 # Database settings
+import dj_database_url
+
+
 
 DATABASES = {
   # "default": ,
-  "default": {},
+  "default": dj_database_url.config(conn_max_age=600),
   "mongodb": {
     "ENGINE": "djongo",
     "NAME": {env.str('MONGO_DB_NAME')},
