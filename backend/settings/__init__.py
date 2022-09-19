@@ -17,3 +17,6 @@ if DEBUG:  # type: ignore
 else:
     # LOCALFOLDER LIBRARY
     from .prod import *
+
+print(DATABASES)
+raise "stop here to check database"
