@@ -4,13 +4,11 @@ Django settings for production environment
 # STDLIB LIBRARY
 import os
 
+# THIRDPARTY LIBRARY
+import dj_database_url
+
 # LOCALFOLDER LIBRARY
-from . import LOGGING, MIDDLEWARE  # , DATABASES
-
-
-
-# import dj_database_url
-
+from . import DATABASES, LOGGING, MIDDLEWARE
 
 
 
@@ -39,6 +37,6 @@ LOGGING['loggers'].update({
   },
 })
 
-# DATABASES['default'].update(dj_database_url.config(conn_max_age=600))
+DATABASES['default'].update(dj_database_url.config(conn_max_age=600))
 
 __all__ = [i for i in dir() if i.isupper()]    # type: ignore

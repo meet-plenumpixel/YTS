@@ -91,22 +91,19 @@ TEMPLATES = [
 WSGI_APPLICATION = "backend.wsgi.application"
 
 
-# THIRDPARTY LIBRARY
 # Database settings
-import dj_database_url
-
-
 
 DATABASES = {
   # "default": ,
-  "default": dj_database_url.config(conn_max_age=600),
+  "default": {},
   "mongodb": {
     "ENGINE": "djongo",
     "NAME": {env.str('MONGO_DB_NAME')},
     "ENFORCE_SCHEMA": False,
     "CLIENT": {
       # pylint: disable-next=line-too-long
-      "host": f"mongodb+srv://{env.str('MONGO_USERNAME')}:{env.str('MONGO_PASSWORD')}@{env.str('MONGO_CLUSTER')}.phvbuke.mongodb.net/?retryWrites=true&w=majority"
+      "host": f"mongodb+srv://{env.str('MONGO_USERNAME')}:{env.str('MONGO_PASSWORD')}@{env.str('MONGO_CLUSTER')}\
+        .phvbuke.mongodb.net/?retryWrites=true&w=majority"
     },
   },
 }
