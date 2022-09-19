@@ -8,7 +8,7 @@ import os
 import dj_database_url
 
 # LOCALFOLDER LIBRARY
-from . import DATABASES, LOGGING, MIDDLEWARE, STATICFILES_STORAGE
+from . import DATABASES, LOGGING, MIDDLEWARE
 
 
 
