@@ -98,7 +98,7 @@ DATABASES = {
   "default": {},
   "mongodb": {
     "ENGINE": "djongo",
-    "NAME": {env.str('MONGO_DB_NAME')},
+    "NAME": env.str('MONGO_DB_NAME'),
     "ENFORCE_SCHEMA": False,
     "CLIENT": {
       # pylint: disable-next=line-too-long
