@@ -11,13 +11,10 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # FIRSTPARTY LIBRARY
-from backend.settings import DATABASES
 from scraper import helpers
 from scraper.models import Channel, Video
 
 
-
-raise DATABASES
 
 logger = logging.getLogger(__name__)
 
