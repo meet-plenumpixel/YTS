@@ -21,14 +21,14 @@ try:
 except  ImportError or ModuleNotFoundError as e:
   logger.error('production settings not available')
 
-if DEBUG:
-  try:
-    # LOCALFOLDER LIBRARY
-    from .local import *
-    logger.info('development settings imported')
+  if DEBUG:
+    try:
+      # LOCALFOLDER LIBRARY
+      from .local import *
+      logger.info('development settings imported')
 
-  except ImportError or ModuleNotFoundError as e:
-    logger.warning('local settings not available')
+    except ImportError or ModuleNotFoundError as e:
+      logger.warning('local settings not available')
 
 
 

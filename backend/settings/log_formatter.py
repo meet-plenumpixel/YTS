@@ -43,7 +43,7 @@ class ColoredFormatter(logging.Formatter):
 
     dash_line = '\n' + attr_formatter('-' * 120) if record.exc_info else ''
 
-    formatter = logging.Formatter(''.join(list_log_attr + [dash_line]), style='{')
+    formatter = logging.Formatter(r''.join(list_log_attr + [dash_line]), style='{')
     log_message = formatter.format(record) + dash_line
 
     if self.coler_code.upper() == 'ASCII':
