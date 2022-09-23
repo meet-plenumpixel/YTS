@@ -130,7 +130,7 @@ LOGGING = {
   'formatters': {
     'verbose': {
       '()': 'backend.settings.log_formatter.ColoredFormatter',
-      'coler_code': 'ASCII'
+      'coler_code': 'ASCII',
     },
     'simple': {
       '()': 'backend.settings.log_formatter.ColoredFormatter',
