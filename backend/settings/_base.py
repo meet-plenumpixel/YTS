@@ -4,15 +4,10 @@ Django settings for YoutubeScraper project.
 
 # STDLIB LIBRARY
 import sys
-from os.path import exists
 
-# THIRDPARTY LIBRARY
-import environ
+# LOCALFOLDER LIBRARY
+from . import BASE_DIR, env
 
-
-
-# base directory of project
-BASE_DIR = environ.Path(__file__) - 3
 
 
 # all django app fall under multiapps directory
@@ -20,18 +15,6 @@ sys.path.insert(0, BASE_DIR("multiapps"))
 
 # all django settings and confg fall under backend directory
 sys.path.insert(0, BASE_DIR("backend"))
-
-env = environ.Env()
-
-
-# Take environment variables from .env file
-if exists(BASE_DIR("envs", "Prod.env")):
-  env.read_env(BASE_DIR("envs", "Prod.env"))
-
-
-# overwrite production environment variables to development environment variables.
-if exists(BASE_DIR("envs", "Dev.env")):
-  env.read_env(BASE_DIR("envs", "Dev.env"), overwrite=True)
 
 
 # SECURITY WARNING: keep the secret key used in production secret!
