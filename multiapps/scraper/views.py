@@ -11,6 +11,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView
 
 # FIRSTPARTY LIBRARY
+from backend.settings import env
 from scraper import helpers
 from scraper.models import Channel, Video
 
@@ -148,7 +149,7 @@ class SearchRedirectView(TemplateView):
   template_name = "scraper/video_list.html"
 
   def get(self, request, *args, **kwargs):
-    n_videos = int(request.GET.get("n_videos", 10))
+    n_videos = int(request.GET.get("n_videos", env.int('DEFAULT_SEARCH_VIDEOS')))
     search_query = request.GET.get("search_query", None)
 
     try:

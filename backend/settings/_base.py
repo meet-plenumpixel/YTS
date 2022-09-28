@@ -146,7 +146,9 @@ LOGGING = {
   'version': 1,
   'disable_existing_loggers': False,
   'formatters': {
-    'verbose': {'()': 'backend.settings.log_formatter.ColoredFormatter', 'coler_code': 'ASCII'},
+    'verbose': {'()': 'backend.settings.log_formatter.ColoredFormatter', 
+    'coler_code': 'ASCII',
+    },
     'simple': {
       '()': 'backend.settings.log_formatter.ColoredFormatter',
     },
