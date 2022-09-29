@@ -22,10 +22,10 @@
           <button class="btn menu__btn">
             <i class="material-symbols-outlined c100">&#xe2c4;</i>
             <span class="video__download">Download</span>
+            <ul class="menu__btn--options">
+              {% include 'scraper/includes/video_stream.html' with menu_class='video__download' video_streams=video_streams video_title=video_metadata.title only %}
+            </ul>
           </button>
-          <ul class="menu__btn--options">
-            {% include 'scraper/includes/video_stream.html' with menu_class='video__download' video_streams=video_streams only %}
-          </ul>
         </div>
       </div>
     </div>

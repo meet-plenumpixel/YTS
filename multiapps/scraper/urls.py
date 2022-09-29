@@ -5,7 +5,7 @@ ScraperApp URL Configuration
 # DJANGO LIBRARY
 from django.urls import path, re_path
 
-# THIRDPARTY LIBRARY
+# FIRSTPARTY LIBRARY
 from scraper import views as scraper_views
 
 

@@ -165,7 +165,8 @@ button {
   background: #212121;
   display: none;
 }
-.menu__btn:focus + .menu__btn--options {
+.menu__btn > .menu__btn--options:hover,
+.menu__btn:focus > .menu__btn--options {
   display: block;
 }
 
