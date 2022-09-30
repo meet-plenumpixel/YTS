@@ -20,7 +20,7 @@ class CommentMongo(models.Model):
   comment_at = models.DateTimeField()
 
   class Meta:
-    verbose_name = 'Videos Comments'
+    verbose_name = 'Comments'
 
   def __repr__(self):
     return f'<CommentMongo: video={self.video}, comment_at={self.comment_at}>'

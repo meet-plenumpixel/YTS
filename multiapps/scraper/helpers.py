@@ -249,7 +249,7 @@ def get_search_videos(query='', n_videos=0):
 
     else:
       v_count += 1
-      if v_count > n_videos:
+      if v_count >= n_videos:
         break
 
   logger.info('extracted videos content details')

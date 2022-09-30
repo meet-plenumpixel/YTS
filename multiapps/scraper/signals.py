@@ -4,6 +4,7 @@ This module processes the signal sent by the model
 
 # STDLIB LIBRARY
 import logging
+import os
 
 # THIRDPARTY LIBRARY
 import pytube
@@ -18,6 +19,7 @@ from scraper.models import (
     Channel,
     ChannelMongo,
     CommentMongo,
+    Setting,
     Video,
     VideoMongo,
 )
@@ -117,3 +119,14 @@ def delete_document_from_video_mongo_collections(sender, instance, *args, **kwar
     logger.info('comments of video obj deleted from mongo')
   except Exception as e:
     logger.exception(f'failed to delete channel obj={instance} from mongo')
+
+
+@receiver(signals.post_save, sender=Setting)
+def set_or_update_app_config(sender, instance, *args, **kwargs):
+  """
+  Set or Update scraper app configuration by admin
+  """
+  key = instance.key
+  value = instance.value
+  os.environ[key] = value
+  logger.debug(f'SET {key}="{value}"')

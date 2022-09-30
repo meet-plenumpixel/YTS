@@ -30,6 +30,7 @@ class ScraperRouter(ConnectionRouter):
     'default': {
       'scraper': [
         'Channel',
+        'Setting',
         'Video',
         # 'ChannelMongo',
         # 'VideoMongo',

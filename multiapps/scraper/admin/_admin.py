@@ -9,7 +9,7 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 
 # FIRSTPARTY LIBRARY
-from scraper.models import Channel, CommentMongo, Video
+from scraper.models import Channel, CommentMongo, Setting, Video
 
 # LOCALFOLDER LIBRARY
 from ._actions import create_channels_videos, get_video_comments
@@ -20,6 +20,16 @@ from ._inlines import (
     VideoMongoInlineAdmin,
 )
 
+
+
+@admin.register(Setting)
+class SettingAdmin(admin.ModelAdmin):
+  """
+  Admin interface for Setting model on sql
+  """
+
+  list_display = ('key', 'value', 'description')
+  search_fields = ('key', 'value', 'description')
 
 
 @admin.register(Channel)

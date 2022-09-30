@@ -47,7 +47,7 @@
     <div id="search" class="header__center">
       <form class="search__form" method="GET" action="{% url 'search-query' %}">
         <div class="search__input">
-          <input type="text" placeholder="Search" name="search_query">
+          <input type="text" placeholder="Search" name="search_query" {% if search_query %}value="{{ search_query }}"{% endif %}>
           <input type="hidden" name="n_videos" value="5">
         </div>
         <button class="search__box btn" type="submit">

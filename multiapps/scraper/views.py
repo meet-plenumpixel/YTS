@@ -149,13 +149,18 @@ class SearchRedirectView(TemplateView):
   template_name = "scraper/video_list.html"
 
   def get(self, request, *args, **kwargs):
-    n_videos = int(request.GET.get("n_videos", env.int('DEFAULT_SEARCH_VIDEOS')))
     search_query = request.GET.get("search_query", None)
+    n_videos = int(request.GET.get("n_videos", 0))
+    if not n_videos or n_videos > env.int('MAX_SEARCH_VIDEOS'):
+      messages.add_message(request, messages.WARNING, f"maximun search videos is {env.int('MAX_SEARCH_VIDEOS')}, set by admin")
+      n_videos = env.int("MAX_SEARCH_VIDEOS")
+
 
     try:
       logger.debug(f'fetching context for search_query={search_query}')
       self.extra_context = helpers.get_search_videos(search_query, n_videos)
       logger.info(f'fetched context')
+      self.extra_context['search_query'] = search_query
     except Exception as e:
       logger.exception(f'failed to fetch context for search_query={search_query}')
 
