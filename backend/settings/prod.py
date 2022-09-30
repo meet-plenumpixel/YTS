@@ -8,7 +8,7 @@ import os
 import dj_database_url
 
 # LOCALFOLDER LIBRARY
-from . import DATABASES, LOGGING, MIDDLEWARE
+from . import DATABASES, LOGGING, MIDDLEWARE, env
 
 
 
@@ -27,12 +27,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 LOGGING['loggers'].update({
   'scraper': {
     'handlers': ['console', 'file'],
-    'level': 'INFO',
+    'level': env.str('SCRAPER_LOGGER_LEVEL'),
     'propagate': True,
   },
   '': {
     'handlers': ['console', 'file'],
-    'level': 'INFO',
+    'level': env.str('DEFAULT_LOGGER_LEVEL'),
     'propagate': True,
   },
 })

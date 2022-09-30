@@ -10,6 +10,7 @@ from datetime import timedelta, timezone
 import pytube
 
 # FIRSTPARTY LIBRARY
+from backend.settings import env
 from scraper.models import ChannelMongo, CommentMongo, Video, VideoMongo
 from scraper.utils import calc_time_ago, format_duration, numberize
 
@@ -79,7 +80,7 @@ def prepare_video_metadata(v_obj=None):
       'id': v_obj.video_id,
       'title': v_obj.title,
       'view_count': '{:,}'.format(v_obj.view_count),
-      'like_count': numberize(v_obj.like_count),
+      'like_count': numberize(v_obj.like_count)[:-2],
       'publish_at': v_obj.publish_at.strftime('%b %d, %Y'),
       'comment_count': v_obj.comment_count,
     }
@@ -171,7 +172,7 @@ def get_channels_videos(channel=None):
       records.append(v)
       documents.append(vm)
 
-      if v_count > 5:
+      if v_count > env.int('MAX_VIDEOS_FROM_CHANNEL'):
         break
 
   logger.info(f'fetched details of videos')
