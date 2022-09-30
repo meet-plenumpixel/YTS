@@ -37,8 +37,8 @@ class Setting(models.Model):
   def __repr__(self):
     return f'<ScraperSetting: key={self.key}, value={self.value}>'
 
-  def __str__(self):
-      return f'{self.key}'
+  # def __str__(self):
+  #     return f'{self.key}'
 
 
 __all__ = [
