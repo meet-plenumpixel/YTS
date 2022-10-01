@@ -5,6 +5,7 @@ Admin actions to perform database queries in bulk at once
 # STDLIB LIBRARY
 import json
 import logging
+import os
 
 # DJANGO LIBRARY
 from django.contrib import admin, messages
@@ -69,7 +70,7 @@ def get_video_comments(modeladmin, request, queryset):
 
 
 @admin.action()
-def create_channels_videos(modeladmin, request, queryset):
+def get_channels_videos(modeladmin, request, queryset):
   """
   Create videos for each channel in channel queryset
   """
@@ -94,3 +95,14 @@ def create_channels_videos(modeladmin, request, queryset):
       logger.exception(f'failed to create videos for channel={channel}')
 
   logger.info('all videos created from selected channels queryset ')
+
+
+@admin.action()
+def force_to_apply_config(modeladmin, request, queryset):
+  """
+  Force to apply config immediately
+  """
+
+  for key,value in queryset.values_list("key", "value"):
+    os.environ[key] = value
+    logger.debug(f'SET {key}="{value}"')

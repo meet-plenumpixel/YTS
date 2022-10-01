@@ -1,0 +1,20 @@
+[
+{
+  "model": "scraper.setting",
+  "pk": 1,
+  "fields": {
+    "key": "MAX_VIDEOS_FROM_CHANNEL",
+    "value": "35",
+    "description": "maximum videos from channel to fetch data"
+  }
+},
+{
+  "model": "scraper.setting",
+  "pk": 2,
+  "fields": {
+    "key": "MAX_SEARCH_VIDEOS",
+    "value": "15",
+    "description": "maximum search video to fetch data"
+  }
+}
+]

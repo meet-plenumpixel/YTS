@@ -12,7 +12,11 @@ from django.utils.safestring import mark_safe
 from scraper.models import Channel, CommentMongo, Setting, Video
 
 # LOCALFOLDER LIBRARY
-from ._actions import create_channels_videos, get_video_comments
+from ._actions import (
+    force_to_apply_config,
+    get_channels_videos,
+    get_video_comments,
+)
 from ._inlines import (
     ChanneMongolInlineAdmin,
     CommentMongoInlineAdmin,
@@ -31,6 +35,8 @@ class SettingAdmin(admin.ModelAdmin):
   list_display = ('key', 'value', 'description')
   search_fields = ('key', 'value', 'description')
 
+  actions = [force_to_apply_config]
+
 
 @admin.register(Channel)
 class ChannelAdmin(admin.ModelAdmin):
@@ -44,7 +50,7 @@ class ChannelAdmin(admin.ModelAdmin):
   readonly_fields = ('last_updated',)
 
   inlines = [ChanneMongolInlineAdmin, VideoInlineAdmin]
-  actions = [create_channels_videos]
+  actions = [get_channels_videos]
 
   fieldsets = (
     (None, {'fields': (('channel_id', 'custom_url'), 'title')}),
