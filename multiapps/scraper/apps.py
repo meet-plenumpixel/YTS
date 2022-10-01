@@ -8,10 +8,10 @@ import os
 
 # DJANGO LIBRARY
 from django.apps import AppConfig
-from django.db.utils import OperationalError
 
 
 
+# from django.db.utils import OperationalError
 # from django.core.management import call_command
 
 logger = logging.getLogger(__name__)
